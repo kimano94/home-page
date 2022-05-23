@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Интерактив</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lora&family=Raleway&display=swap");
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        transition: all 0.25s; /* https://source.unsplash.com/1600x900/?future */
+        background: url("img/summer.jpg") center no-repeat;
+        font-family: "Raleway", sans-serif;
+      }
+
+      div {
+        text-align: center;
+      }
+
+      button {
+        border: 1px solid black;
+        padding: 15px 20px;
+        border-radius: 20px;
+        background: transparent;
+        cursor: pointer;
+        outline: none;
+        font-family: "Lora", serif;
+      }
+
+      h1 {
+        font-family: "Lora", serif;
+      }
+
+      h1,
+      h3 {
+        animation: down /*название анимации*/ 0.5s;
+      }
+
+      /*начало анимации
+      пункт назначения анимации*/
+      @keyframes down {
+        from {
+          transform: translateY(-50px); /*задаем позицию*/
+        }
+
+        to {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h3>Привет,</h3>
+      <h1>Сейчас 13:30:12</h1>
+      <!-- <button>Сменить фон</button> -->
+    </div>
+
+    <script>
+      // Записать свое имя
+      let name;
+      if (localStorage.getItem("my-name")) {
+        name = localStorage.getItem("my-name");
+      } else {
+        name = prompt("Какое у вас имя?");
+        localStorage.setItem("my-name", name);
+      }
+      //const name = "Привет, ";
+
+      document.querySelector("h3").textContent = "Привет, " + name;
+
+      document.querySelector("h1").textContent =
+        "Сейчас " + new Date().toLocaleTimeString();
+
+      setInterval(function () {
+        document.querySelector("h1").textContent =
+          "Сейчас " + new Date().toLocaleTimeString();
+      });
+
+      // const colors = ["purple", "indigo", "brown", "#fff", "#6484d64"];
+      // let index = 0;
+
+      // document.querySelector("button").onclick = function () {
+      //   document.body.style.background = colors[index];
+      //   index++;
+      //   /*запустить по кругу массива*/
+      //   if (index >= colors.length) index = 0;
+      // };
+    </script>
+  </body>
+</html>

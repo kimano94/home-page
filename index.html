@@ -56,6 +56,7 @@
   <body>
     <div>
       <h3>Привет,</h3>
+      <h2>Сегодня</h2>
       <h1>Сейчас 13:30:12</h1>
       <!-- <button>Сменить фон</button> -->
     </div>
@@ -72,6 +73,9 @@
       //const name = "Привет, ";
 
       document.querySelector("h3").textContent = "Привет, " + name;
+
+      document.querySelector("h2").textContent =
+        "Сегодня " + new Date().toLocaleDateString();
 
       document.querySelector("h1").textContent =
         "Сейчас " + new Date().toLocaleTimeString();
